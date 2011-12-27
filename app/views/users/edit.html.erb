@@ -1,0 +1,16 @@
+<% form_for @user, :html => { :multipart => true } do |f| %>
+<table align='center'>
+	<tr>	
+		<td>Full Name</td>
+		<td><%= f.text_field :name %></td>
+	</tr>	
+	<tr>	
+		<td>Image:</td>
+		<td><%= f.file_field :image %></td>
+	</tr>
+	<tr>	
+		<td></td>
+		<td><%= f.submit %></td>
+	</tr>	
+</table>
+<% end %>

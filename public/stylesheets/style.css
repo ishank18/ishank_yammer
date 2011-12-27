@@ -1,2 +1,6 @@
-.mainBody { width:700px; background:#f1f1f1 }
+.mainBody { width:700px; background:#f1f1f1; float:left; dispaly:inline }
 #post_text { width:680px; height:100px; }
+.userContainer { width:350px; background:#e1e1e1; float:right } 
+.comment { width:450px; height:30px; }
+.commentButton { cursor:pointer; color:blue; padding:3px; background:#aaa666; font-size:12px; margin-top:5px; }
+.comments { display:block; font-size:12px; }

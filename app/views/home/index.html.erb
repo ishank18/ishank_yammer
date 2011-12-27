@@ -1,27 +1,66 @@
+<script>
+function follow(id) {
+	$.ajax({
+    url: '<%= follow_home_path %>', 
+    dataType: 'script',
+    type: 'post', 
+    data: 'master_id='+id
+	});
+}
+
+function addComment(id) {
+	$.ajax({
+    url: '<%= comment_home_path %>', 
+    dataType: 'script',
+    type: 'post', 
+    data: 'post_id='+id+'&comment='+$("#commentText"+id).attr("value")
+	});
+
+}
+</script>
+
+<div id='msg'></div>
+
 <%= link_to 'Add new user', new_user_path if admin_signed_in? %>
+
 <h2>Welcome Home</h2>
+
 <div class="mainBody">
-<% form_for @post, :html => { :multipart => true } do |f| %>
-	<table width=100%>
-		<tr>
-			<td colspan=2>
-				<%= f.text_area :text %>
-			</td>
-		</tr>	
-		<tr>
-			<td><%= f.file_field :image %></td>
-			<td align='right'><%= f.submit %></td>
-		</tr>
-	</table>	
-<% end %>	
-
-<% @posts.each do |post| %>
-
-	<%= post.user.email %><br>
-	<%= post.text %><br><br>
-	
-<% end %>
-
-
+	<% form_for @post, :html => { :multipart => true } do |f| %>
+		<table width=100%>
+			<tr>
+				<td colspan=2>
+					<%= f.text_area :text %>
+				</td>
+			</tr>	
+			<tr>
+				<td><%= f.file_field :image %></td>
+				<td align='right'><%= f.submit %></td>
+			</tr>
+		</table>	
+	<% end %>	
+	<br><br><br>
+	<% @posts.each do |post| %>
+		<%= post.user.email %><br>
+		<%= post.text %><br>
+		<% post.comments.each do |comment| %>
+			<span class='comments'><%= comment.user.email %> -- <%= comment.comment %></span>
+		<% end %>
+		<span class='comments' id='latestComment<%= post.id %>'></span>
+		<textarea class='comment' id='commentText<%= post.id %>'></textarea><br>
+		<span class='commentButton' id='comment<%= post.id %>' onclick = "addComment(<%= post.id %>)">Comment</span>
+		<br><br>
+	<% end %>
 </div>
 
+
+
+<div class='userContainer'>
+	<% @users.each do |user| %>
+	<span id='followBox<%= user.id =%>'>
+		<%= user.email %>
+		<input type='button' onclick="follow(<%= user.id =%>)" value="Follow" />
+		<br><br>
+	</span>	
+	<% end %>
+</div>

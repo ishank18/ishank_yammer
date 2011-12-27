@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.7'
 gem 'devise'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'jquery-rails', '>= 1.0.12'
+gem 'acts_as_commentable'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

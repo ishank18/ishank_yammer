@@ -8,11 +8,18 @@ IshankYammer::Application.routes.draw do
 
   devise_for :admins
 
-	resource :users
-
+	resources :users 
+	
+	
 	resource :posts
 
-	get '/add_new', :to => "home#new_user", :as => "new_user"
+	resource :home, :controller => :home do
+		post "follow"
+		post "comment"
+		get "new_user"
+	end
+
+
 
 	root :to => "home#index"
   # The priority is based upon order of creation:

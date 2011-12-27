@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-
+	
+	has_attached_file :image, :styles => { :thumb=> "100x100#", :small  => "400x400>" }
 	has_many :posts
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

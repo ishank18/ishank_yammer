@@ -3,4 +3,5 @@ class Post < ActiveRecord::Base
 	validates :text, :presence => true
 	validates :user_id, :presence => true
 	belongs_to :user
+	acts_as_commentable
 end

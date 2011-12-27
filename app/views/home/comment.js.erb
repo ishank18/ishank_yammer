@@ -1,0 +1,2 @@
+$("#commentText<%= params[:post_id] %>").attr("value", "")
+$("#latestComment<%= params[:post_id] %>").html("<%= escape_javascript(@comment.user.email + " -- " + @comment.comment) %>")
