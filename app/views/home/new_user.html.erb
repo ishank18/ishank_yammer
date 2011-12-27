@@ -1,0 +1,19 @@
+<h2 align='center'>Add Admin</h2>
+
+<%= form_for @user do |f| %>
+
+  <table width="800" class="ShowTable" align='center'>
+		<tr>
+			<td>E - mail</td>
+			<td><%= f.text_field :email %></td>
+		</tr>	
+		<tr>
+			<td></td>
+			<td><%= f.submit "Add User" %></td>
+		</tr>	
+  </table>
+  
+<% end %>
+<script>
+	$(".ShowTable tr:odd").addClass("AlternateRow");
+</script>

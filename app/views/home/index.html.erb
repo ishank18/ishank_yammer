@@ -1,0 +1,27 @@
+<%= link_to 'Add new user', new_user_path if admin_signed_in? %>
+<h2>Welcome Home</h2>
+<div class="mainBody">
+<% form_for @post, :html => { :multipart => true } do |f| %>
+	<table width=100%>
+		<tr>
+			<td colspan=2>
+				<%= f.text_area :text %>
+			</td>
+		</tr>	
+		<tr>
+			<td><%= f.file_field :image %></td>
+			<td align='right'><%= f.submit %></td>
+		</tr>
+	</table>	
+<% end %>	
+
+<% @posts.each do |post| %>
+
+	<%= post.user.email %><br>
+	<%= post.text %><br><br>
+	
+<% end %>
+
+
+</div>
+
