@@ -9,10 +9,8 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<%= link_to 'Sign in as Admin', new_admin_session_path, :style => "float:right" if !(admin_signed_in? || user_signed_in?) %>
-<% if (admin_signed_in? || user_signed_in?) %>
-
-
+<% if (user_signed_in?) %>
+	<%= link_to 'Add User', new_user_path if current_user.is_admin == true %>
 	<%= link_to 'Sign Out', destroy_admin_session_path, :method => :delete  %>
 	<%= link_to 'Edit Profile', edit_user_path(current_user.id)  %>
 <% end %>
