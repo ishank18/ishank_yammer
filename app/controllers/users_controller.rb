@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 	end
 	
 	def create
-		@user = User.new(:email => params[:user][:email])
+		@user = User.new(:email => params[:email])
 		if @user.save
 			redirect_to :root, :alert => "Confirmation mail has been successfully send!"
 		else

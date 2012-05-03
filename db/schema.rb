@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111228044851) do
+ActiveRecord::Schema.define(:version => 20120109053620) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20111228044851) do
     t.integer  "user_id",                        :default => 0,  :null => false
   end
 
-  create_table "followings", :force => true do |t|
+  create_table "followings", :id => false, :force => true do |t|
     t.integer "master"
     t.integer "follower"
   end

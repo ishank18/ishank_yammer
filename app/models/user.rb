@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 	
+	
+	has_and_belongs_to_many :followers, :class_name => "User", :join_table => :followings , :foreign_key => :follower, :association_foreign_key => :master
+	
 	has_attached_file :image, :styles => { :thumb=> "100x100#", :small  => "400x400>" }
 	has_many :posts
   # Include default devise modules. Others available are:
